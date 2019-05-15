@@ -1,0 +1,35 @@
+#debug: true
+
+# PROFILES  交互服务接口
+## dev | prod | trds
+spring:
+  main.show_banner: false
+  profiles:
+      active: dev
+  application:
+    name: explore-cqrs-axon-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+# HTTP encoding (HttpEncodingProperties)
+  http.encoding.charset: UTF-8 # the encoding of HTTP requests/responses
+  http.encoding.enabled: true # enable http encoding support
+  http.encoding.force: true # force the configured encoding
+  freemarker.cache: false
+server:
+  port: 6080
+logging:
+ file:  logs/${spring.application.name}/${spring.application.name}.log
+ level:
+   ROOT: info
+   org.springframework.web: DEBUG
+---
+spring:
+  profiles: test
+logging:
+    file:  /opt/logs/${spring.application.name}/${spring.application.name}.log
+---
+
+spring:
+  profiles: prod
+logging:
+    file:  ${spring.application.name}/${spring.application.name}.log
