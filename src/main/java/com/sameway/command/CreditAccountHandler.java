@@ -1,10 +1,12 @@
 package com.sameway.command;
 
 import org.axonframework.commandhandling.annotation.CommandHandler;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by triump on 2019/5/15.
  */
+@Component
 public class CreditAccountHandler {
 
 
@@ -17,3 +19,5 @@ public class CreditAccountHandler {
                 + " Amount to credit with: "+ creditAccountCommand.getAmount());
     }
 }
+
+
